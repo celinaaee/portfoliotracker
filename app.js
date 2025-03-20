@@ -10,7 +10,7 @@ app.use(express.urlencoded({extended: true}));
 
 // Simple route
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("index" ,{msg: "hi"});
 });
 
 //POST til bruger log in
