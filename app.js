@@ -3,11 +3,14 @@ const app = express();
 const PORT = 3000;
 
 // Middleware to parse JSON requests
-app.use(express.json());
+app.use(express.static("public"));
+
+app.set("view engine", "ejs") //henviser til vores view mappe - sætter ejs som template til rendering af views 
+app.use(express.urlencoded({extended: true}));
 
 // Simple route
 app.get("/", (req, res) => {
-  res.send("Hello, Express!");
+  res.render("index");
 });
 
 // Start the server
