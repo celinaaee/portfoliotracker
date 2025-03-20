@@ -13,6 +13,8 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+//POST til bruger log in
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
