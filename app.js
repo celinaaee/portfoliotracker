@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 // Middleware
 //Gør alt i 'public' tilgængeligt for browseren (JS, CSS osv.)
@@ -8,6 +8,8 @@ app.use(express.static("public"));
 
 app.set("view engine", "ejs") //henviser til vores view mappe - sætter ejs som template til rendering af views 
 app.use(express.urlencoded({extended: true}));
+
+const brugere = []; // Her gemmes brugerne i hukommelsen mens serveren kører
 
 // Simple route
 app.get("/", (req, res) => {
@@ -17,9 +19,32 @@ app.get("/", (req, res) => {
 //POST til bruger log in
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
-  // Her kunne du validere brugeren
-  res.send(`Modtaget login for: ${username}`);
+
+  const bruger = brugere.find(user => user.username === username && user.password === password);
+
+  if (bruger) {
+    res.send(`Velkommen, ${username}! Du er nu logget ind.`);
+  } else {
+    res.send("Forkert brugernavn eller kodeord.");
+  }
 });
+
+
+app.post("/signup", (req, res) => {
+  const { username, password } = req.body;
+
+  // Tjek om brugeren allerede findes
+  const findesAllerede = brugere.find(user => user.username === username);
+
+  if (findesAllerede) {
+    res.send("Brugernavn er allerede taget. Prøv et andet.");
+  } else {
+    // Gem brugeren
+    brugere.push({ username, password });
+    res.send("Bruger oprettet! Du kan nu logge ind.");
+  }
+});
+
 
 // Start the server
 app.listen(PORT, () => {

@@ -7,7 +7,23 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+    <!-- viser os indholdet af variablen msg, som er hi -->
     <h1><%= msg %></h1>
- 
+
+<!-- Formular til bruger login -->
+    <h2>Log ind</h2>
+    <form action="/login" method="POST">
+        <input type="text" name="username" placeholder="Brugernavn" required />
+        <input type="password" name="password" placeholder="Adgangskode" required />
+        <button type="submit">Log ind</button>
+    </form>
+
+    <h2>Opret bruger</h2>
+    <form action="/signup" method="POST">
+        <input type="text" name="username" placeholder="Nyt brugernavn" required />
+        <input type="password" name="password" placeholder="Kodeord" required />
+        <button type="submit">Opret bruger</button>
+    </form>
+
 </body>
 </html>
