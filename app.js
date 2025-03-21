@@ -45,6 +45,11 @@ app.post("/signup", (req, res) => {
   }
 });
 
+//route til dashboard
+app.get("/dashboard", (req, res) => {
+  res.render("dashboard", { username: "dinBruger" });
+});
+
 
 // Start the server
 app.listen(PORT, () => {
