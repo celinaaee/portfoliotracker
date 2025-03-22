@@ -45,10 +45,26 @@ app.post("/signup", (req, res) => {
   }
 });
 
-//route til dashboard
 app.get("/dashboard", (req, res) => {
-  res.render("dashboard", { username: "dinBruger" });
+  // Midlertidige dummy-data (til du henter det fra DB)
+  const username = "Celina";
+  const totalVaerdi = 224543;
+  const realiseretGevinst = 10241;
+  const urealisaretGevinst = 25015;
+
+  const topVaerdiListe = [];
+  const topProfitListe = [];
+
+  res.render("dashboard", {
+    username,
+    totalVaerdi,
+    realiseretGevinst,
+    urealisaretGevinst,
+    topVaerdiListe,
+    topProfitListe
+  });
 });
+
 
 
 // Start the server

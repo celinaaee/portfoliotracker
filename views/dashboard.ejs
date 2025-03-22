@@ -1,28 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="/style.css">
-</head>
-<body>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dashboard</title>
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/dashboard.css" />
 </head>
 <body>
 
-  <div class="containerDashboard">
-    <h1>Velkommen til dit dashboard, <%= username %>!</h1>
-    <p>Her kan du tilføje mere funktionalitet senere...</p>
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h2>PortfolioTracker</h2>
+    <a href="#">Dashboard</a>
+    <a href="#">Accounts</a>
+    <a href="#">Portfolios</a>
   </div>
 
-</body>
-</html>
+  <!-- MAIN CONTENT -->
+  <div class="main">
+    
+    <!-- 👤 Dynamisk velkomst -->
+    <div class="containerDashboard">
+      <h1>Velkommen til dit dashboard, <%= username %>!</h1> <!-- HENTER brugernavn fra database/session -->
+      <p>Her kan du tilføje mere funktionalitet senere...</p>
+    </div>
+
+    <h1>Dashboard</h1>
+
+    <!-- 💰 DYNAMISKE KORT: henter værdier fra brugerens portefølje -->
+    <div class="cards">
+      <div class="card">
+        <h3>Total værdi</h3>
+      <p><%= totalVaerdi %> DKK</p> <!-- HENTES fra databasen -->
+      </div>
+      <div class="card">
+        <h3>Realisaret gevinst</h3>
+        <p><%= realiseretGevinst %> DKK</p> <!-- HENTES fra databasen -->
+      </div>
+      <div class="card">
+        <h3>Urealisaret gevinst</h3>
+        <p><%= urealisaretGevinst %> DKK</p> <!-- HENTES fra databasen -->
+      </div>
+    </div>
+
+    <!-- 📈 GRAF: kan senere bygges med Chart.js og dynamiske datapunkter -->
+    <div class="chart">
+      <h3>Samlet værdi</h3>
+      <div class="chart-placeholder">[Graf placeholder]</div> <!-- Erstattes med rigtig graf og data -->
+    </div>
+
+    <!-- 📋 TABELLER: dynamisk top 5 lister -->
+    <div class="tables">
+
+      <!-- Værdi-baseret liste -->
+      <div class="table">
+        <h3>Top 5 værdipapirer (værdi)</h3>
+        <table>
+          <tr><th>Navn</th><th>Portefølje</th><th>24h</th><th>Værdi</th></tr>
+          
+          <% topVaerdiListe.forEach(papir => { %>
+            <tr>
+              <td><%= papir.navn %></td>
+              <td><%= papir.portfolio %></td>
+              <td><%= papir.change24h %></td>
+              <td><%= papir.vaerdi %> DKK</td>
+            </tr>
+          <% }); %> <!-- HENTER fra databasen -->
+        </table>
+      </div>
+
+      <!-- Profit-baseret liste -->
+      <div class="table">
+        <h3>Top 5 værdipapirer (profit)</h3>
+        <table>
+          <tr><th>Navn</th><th>Portefølje</th><th>24h</th><th>Profit</th></tr>
+          
+          <% topProfitListe.forEach(papir => { %>
+            <tr>
+              <td><%= papir.navn %></td>
+              <td><%= papir.portfolio %></td>
+              <td><%= papir.change24h %></td>
+              <td><%= papir.profit %> DKK</td>
+            </tr>
+          <% }); %> <!-- HENTES fra databasen -->
+        </table>
+      </div>
+
+    </div>
+
+  </div> <!-- SLUT MAIN -->
 
 </body>
 </html>
