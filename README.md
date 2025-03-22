@@ -5,7 +5,8 @@
 - Brugeren kan oprette en konto (signup)
 - Brugeren kan logge ind (login)
 
-
+#dashboard
+- side der giver bruger over blik over deres værdipapirer
 
 #user
 
