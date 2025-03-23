@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/style.css">
-</head>
+<%- include('./partials/head.ejs') %>
 <body>
+<link rel="stylesheet" href="/style.css">
 <!-- Formular til bruger login -->
 <div class="container">
     <h1><%= msg %></h1>
@@ -25,6 +21,6 @@
       <button type="submit">Opret bruger</button>
     </form>
   </div>
-
+  <%- include('partials/footer') %>
 </body>
 </html>

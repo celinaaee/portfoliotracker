@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="/dashboard.css" />
-</head>
+<%- include('./partials/head.ejs') %>
 <body>
-
+  <link rel="stylesheet" href="/dashboard.css">
   <!-- SIDEBAR -->
   <div class="sidebar">
     <h2>PortfolioTracker</h2>
@@ -89,6 +84,6 @@
     </div>
 
   </div> <!-- SLUT MAIN -->
-
+  <%- include('partials/footer') %>
 </body>
 </html>
