@@ -3,17 +3,10 @@
 <%- include('./partials/head.ejs') %>
 <body>
   <link rel="stylesheet" href="/dashboard.css">
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-    <h2>PortfolioTracker</h2>
-    <a href="#">Dashboard</a>
-    <a href="#">Accounts</a>
-    <a href="#">Portfolios</a>
-  </div>
 
   <!-- MAIN CONTENT -->
+  <%- include('./partials/nav.ejs')%>
   <div class="main">
-    
     <!-- 👤 Dynamisk velkomst -->
     <div class="containerDashboard">
       <h1>Velkommen til dit dashboard, <%= username %>!</h1> <!-- HENTER brugernavn fra database/session -->
