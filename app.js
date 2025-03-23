@@ -10,7 +10,7 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.render("index", { msg: "hi" });
+  res.render("index", { msg: "Velkommen" });
 });
 
 app.post("/login", userController.login);

@@ -1,24 +1,26 @@
-const userModel = require("../models/userModels");
+//Opretter userModel variabel
+//Gemmer data fra userModel.ejs
+const userModel = require("../models/userModel");
 
 function login(req, res) {
   const { username, password } = req.body;
   const bruger = userModel.findUser(username, password);
 
   if (bruger) {
-    res.send(`Velkommen, ${username}! Du er nu logget ind.`);
+    res.redirect("/dashboard");
   } else {
-    res.send("Forkert brugernavn eller kodeord.");
+    res.render("index", { msg: "Forkert brugernavn eller kodeord." });
   }
 }
 
 function signup(req, res) {
-  const { username, password } = req.body;
+  const { username, email, password } = req.body;
 
   if (userModel.userExists(username)) {
-    res.send("Brugernavn er allerede taget. Prøv et andet.");
+    res.render("index", { msg: "Brugernavn er allerede taget." });
   } else {
-    userModel.createUser(username, password);
-    res.send("Bruger oprettet! Du kan nu logge ind.");
+    userModel.createUser(username, email, password);
+    res.redirect("/dashboard");
   }
 }
 
