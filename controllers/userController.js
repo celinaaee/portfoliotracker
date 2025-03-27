@@ -14,14 +14,18 @@ function login(req, res) {
 }
 
 function signup(req, res) {
-  const { username, email, password } = req.body;
+  const {name, username, email, password } = req.body;
 
-  if (userModel.userExists(username)) {
-    res.render("index", { msg: "Brugernavn er allerede taget." });
-  } else {
-    userModel.createUser(username, email, password);
-    res.redirect("/dashboard");
-  }
+  // if (userModel.userExists(username)) {
+  //   res.render("index", { msg: "Brugernavn er allerede taget." });
+  // } else {
+  //   userModel.createUser(username, email, password);
+  //   res.redirect("/dashboard");
+  // }
+
+  // inden den her funktion kan man lave if/else der tjekker om bruger eksisterer
+  createUser(name, username, email, password);
+
 }
 
 module.exports = { login, signup };
